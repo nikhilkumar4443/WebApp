@@ -1,22 +1,18 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Code Checkout'){
-            steps {
-                //cleanWs()
-                checkout scm
-            }
-        }
-        stage('Hello') {
-             when {
-                allOf {
-                    changeset "scripts/**"
-                }
-            }
-            steps {
-                echo 'Hello World'
-            }
-        }
-    }
+  
+  stage('Build') {
+    echo "building"
+  }
+  stage('Deploy to testing') {
+    echo "deployed"
+  }
+  stage('QA Team certification') {
+    input "Deploy to prod?"
+  }
+  stage('Deploy to prod') {
+    echo "deployed"
+  }
+
 }
