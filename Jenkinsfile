@@ -29,9 +29,7 @@ static def getStage(String branchName) {
 
 
 pipeline{
-    agent {
-        any
-    }
+    agent any
 
     options{
         timestamps()
