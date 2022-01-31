@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+echo "Helllo"
 set -x
 APP_HOME="/home/ec2-user/server2"
 cd $APP_HOME
