@@ -30,7 +30,7 @@ static def getStage(String branchName) {
 
 pipeline{
     agent {
-        node('maven01')
+        any
     }
 
     options{
