@@ -1,7 +1,7 @@
 script {
             // Define Variable
              def USER_INPUT = input(
-                    message: 'User input required - Some Yes or No question?',
+                    message: 'do you want to deloy QR code',
                     parameters: [
                             [$class: 'ChoiceParameterDefinition',
                              choices: ['no','yes'].join('\n'),
@@ -12,8 +12,9 @@ script {
             echo "The answer is: ${USER_INPUT}"
 
             if( "${USER_INPUT}" == "yes"){
-                //do something
+                        printf("Performing the action")
+                
             } else {
-                //do something else
+               printf("Skipping the action")
             }
         }
