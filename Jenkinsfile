@@ -14,7 +14,7 @@ pipeline{
         }
         stage('Install Dependencies') {
             steps {
-               
+             script {
                 def USER_INPUT = input(
                     message: 'do you want to deloy QR code',
                     parameters: [
@@ -24,17 +24,18 @@ pipeline{
                              description: 'Menu - select box option']
                     ])
 
-            echo "The answer is: ${USER_INPUT}"
+                echo "The answer is: ${USER_INPUT}"
 
-            if( "${USER_INPUT}" == "yes"){
-                 sh """
+                if( "${USER_INPUT}" == "yes"){
+                sh """
                   echo "Performing the action"
-                 """                
-            } else {
+                """                
+                } else {
                  sh """
                   echo "Skipping the action"
                  """
-            }
+                }
+            
             }
         }
 
