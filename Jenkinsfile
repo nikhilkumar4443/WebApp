@@ -41,19 +41,5 @@ pipeline{
     }
 
     }
-    post {
-        success {
-            script {
-                echo "SUCCESS"
-            }
-        }
-        always {
-            sh """
-                docker stop ${CONTAINER}
-                docker rm ${CONTAINER}
-                docker rmi ${IMAGE}:latest
-            """
-            cleanWs()
-        }
-    }
+   
 }
