@@ -15,12 +15,26 @@ pipeline{
     stage('Wait for user to input text?') {
         steps {
             script {
-                def userInput = input(id: 'userInput', message: 'Merge to?',
-                parameters: [[$class: 'ChoiceParameterDefinition', defaultValue: 'strDef', 
-                    description:'describing choices', name:'nameChoice', choices: "QA\nUAT\nProduction\nDevelop\nMaster"]
-                ])
+            // Define Variable
+             def USER_INPUT = input(
+                    message: 'User input required - Some Yes or No question?',
+                    parameters: [
+                            [$class: 'ChoiceParameterDefinition',
+                             choices: ['no','yes'].join('\n'),
+                             name: 'input',
+                             description: 'Menu - select box option']
+                    ])
 
-                println(userInput); //Use this value to branch to different logic if needed
+            echo "The answer is: ${USER_INPUT}"
+
+            if( "${USER_INPUT}" == "yes"){
+                """
+                echo  "hello"
+                """
+                
+            } else {
+                println("Skkiping")
+            }
             }
         }
 
@@ -43,4 +57,3 @@ pipeline{
         }
     }
 }
-
