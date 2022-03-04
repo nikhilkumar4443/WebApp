@@ -12,9 +12,9 @@ script {
             echo "The answer is: ${USER_INPUT}"
 
             if( "${USER_INPUT}" == "yes"){
-                        printf("Performing the action")
+                        println("Performing the action")
                 
             } else {
-               printf("Skipping the action")
+               println("Skipping the action")
             }
         }
