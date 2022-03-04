@@ -12,9 +12,16 @@ script {
             echo "The answer is: ${USER_INPUT}"
 
             if( "${USER_INPUT}" == "yes"){
-                        println("Performing the action")
+                 sh """
+              
+                  echo "Performing the action"
+                 """
+                       
                 
             } else {
-               println("Skipping the action")
+                 sh """
+              
+                  echo "Skipping the action"
+                 """
             }
         }
