@@ -12,33 +12,19 @@ pipeline{
                 checkout scm
             }
         }
-        stage('Install Dependencies') {
-            steps {
-             script {
-                def USER_INPUT = input(
-                    message: 'do you want to deloy QR code',
-                    parameters: [
-                            [$class: 'ChoiceParameterDefinition',
-                             choices: ['no','yes'].join('\n'),
-                             name: 'input',
-                             description: 'Menu - select box option']
-                    ])
+    stage('Wait for user to input text?') {
+        steps {
+            script {
+                def userInput = input(id: 'userInput', message: 'Merge to?',
+                parameters: [[$class: 'ChoiceParameterDefinition', defaultValue: 'strDef', 
+                    description:'describing choices', name:'nameChoice', choices: "QA\nUAT\nProduction\nDevelop\nMaster"]
+                ])
 
-                echo "The answer is: ${USER_INPUT}"
-
-                if( "${USER_INPUT}" == "yes"){
-                sh """
-                  echo "Performing the action"
-                """                
-                } else {
-                 sh """
-                  echo "Skipping the action"
-                 """
-                }
-            
+                println(userInput); //Use this value to branch to different logic if needed
             }
         }
 
+    }
 
     }
     post {
@@ -57,3 +43,4 @@ pipeline{
         }
     }
 }
+
